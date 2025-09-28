@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff9fb;
+  --foreground: #2c2c2c;
+  --accent: #e07a9a;
+  --header-bg: #ffd6e8;
+  --header-text: #b21f4b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #2c2c2c;
+    --foreground: #f5f5f5;
+    --accent: #ff9ebb;
+    --header-bg: #3d3d3d;
+    --header-text: #ff7597;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Georgia", "Times New Roman", serif; 
+  line-height: 1.7;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+*::-webkit-scrollbar {
+    width: 8px;             /* ширина скролла */
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--header-bg);  /* фон трека */
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--header-text);  /* ползунок */
+    border-radius: 4px;
+}
+
+
+audio::-webkit-media-slider-container{
+    color: red;
+    background: var(--header-bg);
+}
