@@ -2,6 +2,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Image from "next/image";
 import {CircularProgress} from "@mui/material";
+import {loadVideoBlob} from "@/app/api/tales";
 
 const Page = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -9,8 +10,7 @@ const Page = () => {
 
     useEffect(() => {
         const getTale = async () => {
-            const res = await fetch(`http://localhost:5000/film`);
-            const blob = await res.blob();
+            const blob = await loadVideoBlob();
             const url = URL.createObjectURL(blob);
             if (videoRef.current) {
                 videoRef.current.src = url;

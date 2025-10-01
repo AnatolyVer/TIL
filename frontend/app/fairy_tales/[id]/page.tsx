@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { fetchTale } from '@/app/api/tales';
+import {fetchTale, loadAudioBlob,} from '@/app/api/tales';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -35,8 +35,7 @@ const Page = () => {
             const fetchedTale = await fetchTale(params.id);
             setTale(fetchedTale);
 
-            const res = await fetch(`http://localhost:5000/fairy_tales/${fetchedTale._id}/audio`);
-            const blob = await res.blob();
+            const blob = await loadAudioBlob(fetchedTale._id)
             const url = URL.createObjectURL(blob);
             if (audioRef.current) {
                 audioRef.current.src = url;
@@ -82,7 +81,7 @@ const Page = () => {
                         <br />
                         <br />
                         <audio id="player" ref={audioRef} style={{ display: 'none' }} />
-                        <div className="w-1/4 flex flex-col items-center justify-center">
+                        <div className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 flex flex-col items-center justify-center px-6">
                             {canShow ? (<>
                                 <div className="relative w-full flex justify-center items-center">
                                     <p className="mr-2 absolute left-0 mt-5">{formatDuration(currentTime)}</p>

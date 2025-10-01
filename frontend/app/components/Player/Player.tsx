@@ -47,6 +47,7 @@ export default function Player({setIsPlayerReady, setIsPlayerError}: {setIsPlaye
 
             spotifyPlayer.addListener("initialization_error", () => {
                 setIsPlayerError(true);
+                setIsPlayerReady(true);
             });
             spotifyPlayer.addListener("ready", ({ device_id }) => {
                 dispatch(setDeviceID(device_id));
@@ -108,27 +109,27 @@ export default function Player({setIsPlayerReady, setIsPlayerError}: {setIsPlaye
 
     return (
     <div
-        className="fixed bottom-0 border-t-2 pt-2 flex justify-between items-center w-full h-28 bg-[var(--background)] shadow-lg px-6"
+        className="relative border-t-2 flex flex-col lg:flex-row justify-end lg:justify-between items-center w-full h-35 bg-[var(--background)] shadow-lg px-6"
       style={{ background: "var(--background)" }}
     >
         {PlayerState.currentTrack ? (
             <>
-                <div className="flex items-center w-1/4">
+                <div className="flex items-center absolute lg:static left-0 ml-5 top-4 lg:justify-start lg:ml-0 w-1/4">
                     <Image
                         src={PlayerState.currentTrack.album.images[0]?.url as string}
                         width={60}
                         height={60}
-                        className="rounded-lg shadow-md"
+                        className="rounded w-10 lg:w-20 aspect-square  object-cover"
                         alt="Track cover"
                     />
                     <div className="ml-3 flex flex-col">
-                        <h2 className="text-lg font-semibold truncate">{PlayerState.currentTrack.name}</h2>
-                        <p className="text-sm text-gray-400 truncate">{PlayerState.currentTrack.artists.map(a => a.name).join(", ")}</p>
+                        <h2 className="text-sm sm:text-base font-semibold">{PlayerState.currentTrack.name}</h2>
+                        <p className="text-xs sm:text-sm md:text-base text-gray-500 truncate">{PlayerState.currentTrack.artists.map(a => a.name).join(", ")}</p>
                     </div>
                 </div>
                 <Controller/>
-                <div className="w-1/4 flex items-center justify-end gap-2 h-1/2">
-                    <VolumeUpIcon/>
+                <div className="w-3/5 lg:w-1/4 flex absolute lg:static right-0 top-4 sm items-center mr-5 lg:mr-0 justify-end gap-2 h-1/3">
+                    <VolumeUpIcon className="text-sm"/>
                     <div className="w-1/3 flex items-center justify-center">
                         <Slider
                             aria-label="volume-indicator"

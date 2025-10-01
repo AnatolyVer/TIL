@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const api = axios.create({
     baseURL: "https://til-backend-vck5.onrender.com",
-    timeout: 10000,
 });
 
 /*api.interceptors.response.use(

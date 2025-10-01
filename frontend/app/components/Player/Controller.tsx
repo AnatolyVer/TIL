@@ -83,142 +83,147 @@ const Controller = () => {
     }
 
     return (
-        <div className="w-1/2 flex self-end flex-col items-center justify-center">
-            <div className="flex justify-center w-full relative">
-                <p className="mr-2 absolute left-0 mt-5">{formatDuration(PlayerState.current_duration_ms)}</p>
-                <div className="flex gap-5">
-                    <ShuffleIcon
-                        className={`cursor-pointer`}
-                        sx={{
-                            fontSize: 40,
-                            cursor: 'pointer',
-                            color: PlayerState.shuffleMode ? "var(--header-text)" : "white",
-                            transition: 'transform 0.2s',
-                            '&:hover': { transform: 'scale(1.2)' },
-                        }}
-                        onClick={handleShuffle}
-                    />
-                    <SkipPreviousIcon
+        <div className="w-3/4 lg:w-1/2 flex flex-col lg:self-end items-center justify-center lg:mt-0">
+            <div className="flex gap-5 w-full justify-center items-center relative">
+                <p className="absolute left-0 mt-9">{formatDuration(PlayerState.current_duration_ms)}</p>
+                <ShuffleIcon
+                    className="cursor-pointer"
+                    sx={{
+                        cursor: 'pointer',
+                        fontSize: { xs: 25, sm: 25, md: 30, lg: 30, xl: 30, xxl: 40 },
+                        color: PlayerState.shuffleMode ? "var(--header-text)" : "white",
+                        transition: 'transform 0.2s',
+                        '&:hover': { transform: 'scale(1.2)' },
+                    }}
+                    onClick={handleShuffle}
+                />
+                <SkipPreviousIcon
+                    className="cursor-pointer"
+                    sx={{
+                        cursor: 'pointer',
+                        fontSize: { xs: 25, sm: 25, md: 30, lg: 30, xl: 30, xxl: 40 },
+                        transition: 'transform 0.2s',
+                        '&:hover': { transform: 'scale(1.2)' },
+                    }}
+                    onClick={prevTrack}
+                />
+                {PlayerState.isPlaying ? (
+                    <PauseIcon
                         className="cursor-pointer"
                         sx={{
-                            fontSize: 40,
                             cursor: 'pointer',
+                            fontSize: { xs: 25, sm: 25, md: 30, lg: 30, xl: 30, xxl: 40 },
                             transition: 'transform 0.2s',
                             '&:hover': { transform: 'scale(1.2)' },
                         }}
-                        onClick={prevTrack}
+                        onClick={handleTogglePlay}
                     />
-                    {PlayerState.isPlaying ? (
-                        <PauseIcon
-                            className="cursor-pointer "
-                            sx={{
-                                fontSize: 40,
-                                cursor: 'pointer',
-                                transition: 'transform 0.2s',
-                                '&:hover': { transform: 'scale(1.2)' },
-                            }}
-                            onClick={handleTogglePlay}
-                        />
-                    ) : (
-                        <PlayArrowIcon
-                            className="cursor-pointer "
-                            sx={{
-                                fontSize: 40,
-                                cursor: 'pointer',
-                                transition: 'transform 0.2s',
-                                '&:hover': { transform: 'scale(1.2)' },
-                            }}
-                            onClick={handleTogglePlay}
-                        />
-                    )}
-                    <SkipNextIcon
+                ) : (
+                    <PlayArrowIcon
                         className="cursor-pointer"
                         sx={{
-                            fontSize: 40,
                             cursor: 'pointer',
+                            fontSize: { xs: 25, sm: 25, md: 30, lg: 30, xl: 30, xxl: 40 },
                             transition: 'transform 0.2s',
                             '&:hover': { transform: 'scale(1.2)' },
                         }}
-                        onClick={nextTrack}
+                        onClick={handleTogglePlay}
                     />
-                    {PlayerState.repeatMode.current === "off" ? (
-                        <RepeatIcon
+                )}
+                <SkipNextIcon
+                    className="cursor-pointer"
+                    sx={{
+                        cursor: 'pointer',
+                        fontSize: { xs: 25, sm: 25, md: 30, lg: 30, xl: 30, xxl: 40 },
+                        transition: 'transform 0.2s',
+                        '&:hover': { transform: 'scale(1.2)' },
+                    }}
+                    onClick={nextTrack}
+                />
+                {PlayerState.repeatMode.current === "off" ? (
+                    <RepeatIcon
+                        className="cursor-pointer"
+                        sx={{
+                            cursor: 'pointer',
+                            fontSize: { xs: 25, sm: 25, md: 30, lg: 30, xl: 30, xxl: 40 },
+                            transition: 'transform 0.2s',
+                            '&:hover': { transform: 'scale(1.2)' },
+                        }}
+                        onClick={handleRepeat}
+                    />
+                ) : (
+                    PlayerState.repeatMode.current === "track" ? (
+                        <RepeatOneIcon
                             className="cursor-pointer"
                             sx={{
-                                fontSize: 40,
+                                color: "var(--header-text)",
                                 cursor: 'pointer',
+                                fontSize: { xs: 25, sm: 25, md: 30, lg: 30, xl: 30, xxl: 40 },
                                 transition: 'transform 0.2s',
                                 '&:hover': { transform: 'scale(1.2)' },
                             }}
                             onClick={handleRepeat}
                         />
                     ) : (
-                        PlayerState.repeatMode.current === "track" ? (
-                            <RepeatOneIcon
-                                className="cursor-pointer"
-                                sx={{
-                                    fontSize: 40,
-                                    color: "var(--header-text)",
-                                    cursor: 'pointer',
-                                    transition: 'transform 0.2s',
-                                    '&:hover': { transform: 'scale(1.2)' },
-                                }}
-                                onClick={handleRepeat}
-                            />
-                        ) : (
-                            <RepeatIcon
-                                className="cursor-pointer"
-                                sx={{
-                                    fontSize: 40,
-                                    color: "var(--header-text)",
-                                    cursor: 'pointer',
-                                    transition: 'transform 0.2s',
-                                    '&:hover': { transform: 'scale(1.2)' },
-                                }}
-                                onClick={handleRepeat}
-                            />
-                        )
-                    )}
-                </div>
-                <p className="ml-2 absolute right-0 mt-5">{formatDuration(PlayerState.currentTrack!.duration_ms)}</p>
+                        <RepeatIcon
+                            className="cursor-pointer"
+                            sx={{
+                                color: "var(--header-text)",
+                                cursor: 'pointer',
+                                fontSize: { xs: 25, sm: 25, md: 30, lg: 30, xl: 30, xxl: 40 },
+                                transition: 'transform 0.2s',
+                                '&:hover': { transform: 'scale(1.2)' },
+                            }}
+                            onClick={handleRepeat}
+                        />
+                    )
+                )}
+                <p className="ml-2 absolute right-0 mt-9">{formatDuration(PlayerState.currentTrack!.duration_ms)}</p>
             </div>
-            <Slider
-                aria-label="time-indicator"
-                size="small"
-                value={PlayerState.current_duration_ms}
-                min={0}
-                step={1}
-                max={PlayerState.currentTrack!.duration_ms}
-                onChange={handlePositionChange}
-                sx={(t) => ({
-                    color: "var(--header-text)",
-                    height: 4,
-                    "& .MuiSlider-thumb": {
-                        width: 8,
-                        height: 8,
-                        transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
-                        "&::before": {
-                            boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
+            <div className="flex justify-center w-full relative">
+                <Slider
+                    aria-label="time-indicator"
+                    size="small"
+                    value={PlayerState.current_duration_ms}
+                    min={0}
+                    step={1}
+                    max={PlayerState.currentTrack!.duration_ms}
+                    onChange={handlePositionChange}
+                    sx={(t) => ({
+                        color: "var(--header-text)",
+                        height: 4,
+                        padding: "0 0 40px 0",
+                        "& .MuiSlider-track": {
+                            height: 4,
                         },
-                        "&:hover, &.Mui-focusVisible": {
-                            boxShadow: `0px 0px 0px 8px ${"rgb(0 0 0 / 16%)"}`,
-                            ...t.applyStyles("dark", {
-                                boxShadow: `0px 0px 0px 8px ${"rgb(255 255 255 / 16%)"}`,
-                            }),
+                        "& .MuiSlider-thumb": {
+                            width: 8,
+                            height: 8,
+                            transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+                            "&::before": {
+                                boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
+                            },
+                            "&:hover, &.Mui-focusVisible": {
+                                boxShadow: `0px 0px 0px 8px rgb(0 0 0 / 16%)`,
+                                ...t.applyStyles("dark", {
+                                    boxShadow: `0px 0px 0px 8px rgb(255 255 255 / 16%)`,
+                                }),
+                            },
+                            "&.Mui-active": {
+                                width: 20,
+                                height: 20,
+                            },
                         },
-                        "&.Mui-active": {
-                            width: 20,
-                            height: 20,
+                        "& .MuiSlider-rail": {
+                            opacity: 0.28,
                         },
-                    },
-                    "& .MuiSlider-rail": {
-                        opacity: 0.28,
-                    },
-                    ...t.applyStyles("dark", {
-                        color: "#fff",
-                    }),
-                })}
-            />
+                        ...t.applyStyles("dark", {
+                            color: "#fff",
+                        }),
+                    })}
+                />
+            </div>
+
         </div>
     );
 };
