@@ -15,7 +15,7 @@ export async function fetchTale(id: string){
 }
 
 export async function loadAudioBlob(id: string) {
-    const res = await api.get(`/fairy_tales/${id}/audio}`, {
+    const res = await api.get(`/fairy_tales/${id}/audio`, {
         responseType: "blob",
     });
     return res.data
