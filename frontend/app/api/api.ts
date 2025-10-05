@@ -2,9 +2,10 @@ import axios from 'axios';
 
 const api = axios.create({
     baseURL: "https://til-backend-vck5.onrender.com",
+    timeout: 10000,
 });
 
-/*api.interceptors.response.use(
+api.interceptors.response.use(
     response => response,
     error => {
         if (!error.response || error.response.status === 500) {
@@ -14,6 +15,6 @@ const api = axios.create({
         }
         return Promise.reject(error);
     }
-);*/
+);
 
 export default api;
