@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Res, Query } from '@nestjs/common';
+import { Controller, Get, Req, Res} from '@nestjs/common';
 import { Request, Response } from 'express';
 import axios from 'axios';
 
@@ -33,7 +33,7 @@ export class FilmController {
                     'Content-Range': `bytes ${start}-${end}/${fileSize}`,
                     'Accept-Ranges': 'bytes',
                     'Content-Length': chunkSize,
-                    'Content-Type': 'audio/mpeg',
+                    'Content-Type': 'video/mp4',
                     'Access-Control-Allow-Origin': '*',
                 });
 
@@ -41,7 +41,7 @@ export class FilmController {
             } else {
                 res.writeHead(200, {
                     'Content-Length': fileSize,
-                    'Content-Type': 'audio/mpeg',
+                    'Content-Type': 'video/mp4',
                     'Access-Control-Allow-Origin': '*',
                 });
                 res.end(fileBuffer);

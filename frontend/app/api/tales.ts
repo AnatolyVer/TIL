@@ -15,15 +15,14 @@ export async function fetchTale(id: string){
 }
 
 export async function loadAudioBlob(id: string) {
-    const res = await api.get(`/fairy_tales/${id}/audio`, {
-        responseType: "blob",
+    return await api.get(`/fairy_tales/${id}/audio`, {
+        responseType: "arraybuffer",
     });
-    return res.data
 }
 
 export async function loadVideoBlob() {
-    const res = await api.get(`/film`, {
-        responseType: "blob",
+    return await api.get(`/film`, {
+        responseType: "arraybuffer",
+        headers: { 'Range': 'bytes=0-' },
     });
-    return res.data
 }

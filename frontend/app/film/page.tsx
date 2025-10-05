@@ -9,21 +9,21 @@ const Page = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const getTale = async () => {
-            const blob = await loadVideoBlob();
+        const getFilm = async () => {
+            const res = await loadVideoBlob();
+            const blob = new Blob([res.data], { type: "video/mp4" });
             const url = URL.createObjectURL(blob);
             if (videoRef.current) {
                 videoRef.current.src = url;
-                setLoading(false);
+                videoRef.current.onloadeddata = () => setLoading(false);
+                videoRef.current.onerror = (e) => {
+                    console.error('Video error:', e);
+                    setLoading(false);
+                };
+                videoRef.current.load();
             }
         };
-        try {
-            getTale();
-        }
-        catch (e){
-            console.log(e)
-        }
-
+        getFilm();
     }, []);
 
     return (

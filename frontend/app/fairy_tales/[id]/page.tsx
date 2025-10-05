@@ -34,8 +34,8 @@ const Page = () => {
         const getTales = async () => {
             const fetchedTale = await fetchTale(params.id);
             setTale(fetchedTale);
-
-            const blob = await loadAudioBlob(fetchedTale._id)
+            const res = await loadAudioBlob(fetchedTale._id)
+            const blob = new Blob([res.data], { type: "audio/mpeg" });
             const url = URL.createObjectURL(blob);
             if (audioRef.current) {
                 audioRef.current.src = url;
