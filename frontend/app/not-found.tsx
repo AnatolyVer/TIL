@@ -16,7 +16,7 @@ export default function NotFound() {
             />
             <br/>
             <h1 className="text-2xl text-center font-bold leading-tight">
-                Даже у подарка есть границы. Временные...
+                Даже у подарка есть границы. Временные... Попробуй позже
             </h1>
             <Link href="/">
                 <button className="mt-6 w-48 px-4 py-2 cursor-pointer text-white rounded bg-pink-500 hover:bg-pink-600 transition-colors">

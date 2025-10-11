@@ -12,9 +12,9 @@ export default function Home() {
           Каждое мгновение с тобой - это бесценный дар, который я берегу в своём сердце.
           Я люблю тебя бесконечно...
         </h1>
-        <Link href="/my_love">
+        <Link href="/film">
           <button className="mt-6 w-48 px-4 py-2 cursor-pointer text-white rounded bg-pink-500 hover:bg-pink-600 transition-colors">
-            Читать книгу...
+            Смотреть фильм
           </button>
         </Link>
       </div>

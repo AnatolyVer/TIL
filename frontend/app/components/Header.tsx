@@ -1,6 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
+import {fetchTales, loadAudioBlob, loadVideoBlob} from "@/app/api/tales";
+import {getBlobFromIndexedDB, saveBlobToIndexedDB} from "@/app/utils/audioCache";
+import {Tale} from "@/app/fairy_tales/page";
 
 const Header: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +12,27 @@ const Header: React.FC = () => {
         setIsOpen(false);
     };
 
+    useEffect(() => {
+        const fetchAll = async() => {
+            const res = await loadVideoBlob();
+            let blob = await getBlobFromIndexedDB("film");
+            if (!blob) {
+                blob = new Blob([res.data], { type: "video/mp4" });
+                await saveBlobToIndexedDB("film", blob);
+            }
+            const tales: Tale[] = await fetchTales();
+            for (const tale of tales) {
+                let blob = await getBlobFromIndexedDB(tale._id);
+                if (!blob) {
+                    const res = await loadAudioBlob(tale._id);
+                    blob = new Blob([res.data], { type: 'audio/mpeg' });
+                    await saveBlobToIndexedDB(tale._id, blob);
+                }
+            }
+        }
+        fetchAll();
+    }, []);
+    
     return (
         <header
             className="shadow-md fixed top-0 left-0 w-full h-[72px] z-60"

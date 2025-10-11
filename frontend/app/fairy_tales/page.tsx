@@ -4,7 +4,7 @@ import { fetchTales } from "@/app/api/tales";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Tale {
+export interface Tale {
     _id: string;
     name: string;
     img_link: string;

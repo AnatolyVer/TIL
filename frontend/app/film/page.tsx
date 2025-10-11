@@ -3,6 +3,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import Image from "next/image";
 import {CircularProgress} from "@mui/material";
 import {loadVideoBlob} from "@/app/api/tales";
+import {getBlobFromIndexedDB, saveBlobToIndexedDB} from "@/app/utils/audioCache";
 
 const Page = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -10,12 +11,22 @@ const Page = () => {
 
     useEffect(() => {
         const getFilm = async () => {
-            const res = await loadVideoBlob();
-            const blob = new Blob([res.data], { type: "video/mp4" });
+
+            let blob = await getBlobFromIndexedDB("film");
+
+            if (!blob) {
+                const res = await loadVideoBlob();
+                blob = blob = new Blob([res.data], { type: "video/mp4" });
+                await saveBlobToIndexedDB("film", blob);
+            }
+
             const url = URL.createObjectURL(blob);
             if (videoRef.current) {
                 videoRef.current.src = url;
-                videoRef.current.onloadeddata = () => setLoading(false);
+                videoRef.current.onloadeddata = () => {
+                    setLoading(false)
+                    videoRef.current?.focus();
+                };
                 videoRef.current.onerror = (e) => {
                     console.error('Video error:', e);
                     setLoading(false);
@@ -45,6 +56,7 @@ const Page = () => {
                     height="450"
                     controls
                     autoPlay
+                    tabIndex={0}
                 />
                 <div
                     className={`bg-[var(--header-bg)] justify-center items-center w-full top-0 h-full absolute ${loading ? 'flex' : 'hidden'}`}

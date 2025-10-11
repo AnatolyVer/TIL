@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import { Slider } from '@mui/material';
+import {getBlobFromIndexedDB, saveBlobToIndexedDB} from "@/app/utils/audioCache";
 
 interface Tale {
     _id: string;
@@ -34,20 +35,30 @@ const Page = () => {
         const getTales = async () => {
             const fetchedTale = await fetchTale(params.id);
             setTale(fetchedTale);
-            const res = await loadAudioBlob(fetchedTale._id)
-            const blob = new Blob([res.data], { type: "audio/mpeg" });
+
+            let blob = await getBlobFromIndexedDB(fetchedTale._id);
+
+            if (!blob) {
+                const res = await loadAudioBlob(fetchedTale._id);
+                blob = new Blob([res.data], { type: 'audio/mpeg' });
+                await saveBlobToIndexedDB(fetchedTale._id, blob);
+            }
+
             const url = URL.createObjectURL(blob);
             if (audioRef.current) {
                 audioRef.current.src = url;
+
                 audioRef.current.onloadedmetadata = () => {
                     setDuration(audioRef.current!.duration);
-                    setCanShow(true)
+                    setCanShow(true);
                 };
+
                 audioRef.current.ontimeupdate = () => {
                     setCurrentTime(audioRef.current!.currentTime);
                 };
             }
         };
+
         getTales();
     }, [params.id]);
 
