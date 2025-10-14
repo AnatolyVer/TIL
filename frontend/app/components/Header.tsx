@@ -14,12 +14,12 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         const fetchAll = async() => {
-            const res = await loadVideoBlob();
+           /* const res = await loadVideoBlob();
             let blob = await getBlobFromIndexedDB("film");
             if (!blob) {
                 blob = new Blob([res.data], { type: "video/mp4" });
                 await saveBlobToIndexedDB("film", blob);
-            }
+            }*/
             const tales: Tale[] = await fetchTales();
             for (const tale of tales) {
                 let blob = await getBlobFromIndexedDB(tale._id);
