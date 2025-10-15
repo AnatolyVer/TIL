@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     const handleLinkClick = () => {
         setIsOpen(false);
     };
-    
+
     return (
         <header
             className="shadow-md fixed top-0 left-0 w-full h-[72px] z-60"

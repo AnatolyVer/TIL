@@ -6,7 +6,7 @@ const Page = () => {
     return (
         <div className="flex flex-col justify-evenly items-center h-[calc(100vh-72px)] relative px-4 sm:px-8">
 
-            <div className="h-3/4 aspect-video relative">
+            <div className="w-3/4 aspect-video relative">
                 <iframe
                     className="w-full h-full"
                     src="https://drive.google.com/file/d/1U408Ot-4oGDRDm6Cvl__mUfzxOA9HK8B/preview"
