@@ -11,27 +11,6 @@ const Header: React.FC = () => {
     const handleLinkClick = () => {
         setIsOpen(false);
     };
-
-    useEffect(() => {
-        const fetchAll = async() => {
-           /* const res = await loadVideoBlob();
-            let blob = await getBlobFromIndexedDB("film");
-            if (!blob) {
-                blob = new Blob([res.data], { type: "video/mp4" });
-                await saveBlobToIndexedDB("film", blob);
-            }*/
-            const tales: Tale[] = await fetchTales();
-            for (const tale of tales) {
-                let blob = await getBlobFromIndexedDB(tale._id);
-                if (!blob) {
-                    const res = await loadAudioBlob(tale._id);
-                    blob = new Blob([res.data], { type: 'audio/mpeg' });
-                    await saveBlobToIndexedDB(tale._id, blob);
-                }
-            }
-        }
-        fetchAll();
-    }, []);
     
     return (
         <header
