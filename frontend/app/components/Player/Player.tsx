@@ -120,7 +120,11 @@ export default function Player({
                 setIsOverflowing(overflowing);
             }
         };
-        checkOverflow();
+        const frameId = requestAnimationFrame(checkOverflow);
+
+        return () => {
+            cancelAnimationFrame(frameId);
+        };
     }, [PlayerState.currentTrack?.name]);
 
     const handleVolumeChange = async (_: Event, value: number | number[]) => {
@@ -137,7 +141,7 @@ export default function Player({
         >
             {PlayerState.currentTrack ? (
                 <>
-                    <div className="flex items-center absolute lg:static left-0 ml-5 top-4 lg:justify-start lg:ml-0 w-1/4 overflow-hidden">
+                    <div className="flex items-center absolute lg:static left-0 ml-5 top-4 lg:justify-start lg:ml-0 w-3/5 lg:w-2/5 overflow-hidden">
                         <Image
                             src={PlayerState.currentTrack.album.images[0]?.url as string}
                             width={60}
@@ -165,9 +169,9 @@ export default function Player({
                         </div>
                     </div>
                     <Controller />
-                    <div className="w-3/5 lg:w-1/4 flex absolute lg:static right-0 top-4 sm items-center mr-5 lg:mr-0 justify-end gap-2 h-1/3">
+                    <div className="w-3/5 lg:w-2/5 flex absolute lg:static right-0 top-4 sm items-center mr-5 lg:mr-0 justify-end gap-2 h-1/3">
                         <VolumeUpIcon className="text-sm" />
-                        <div className="w-1/3 flex items-center justify-center">
+                        <div className="w-1/5 flex items-center justify-center">
                             <Slider
                                 aria-label="volume-indicator"
                                 size="small"
