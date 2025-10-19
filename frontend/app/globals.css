@@ -49,3 +49,19 @@ audio::-webkit-media-slider-container{
     color: red;
     background: var(--header-bg);
 }
+
+@keyframes marquee-loop {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee-loop {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee-loop 12s linear infinite;
+    width: max-content;
+}
