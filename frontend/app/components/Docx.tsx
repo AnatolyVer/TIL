@@ -274,7 +274,7 @@ const PoemDocx = ({loading, headers, html, title}: {loading: boolean, headers:{ 
                 .docx-content h2,
                 .docx-content h3 {
                     text-align: center;
-                    margin: 1.5em 0 0.8em 0;
+                    margin: 1.5em 0 0 0;
                     scroll-margin-top: 72px;
                     font-weight: bold;
                     color: var(--header-text);

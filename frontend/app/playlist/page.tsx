@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import {fetchPlaylist, playTrack} from "@/app/api/spotify";
-import {Artist, Item, SpotifyPlaylist, Track} from "@/types/spotify";
+import {Item, SpotifyPlaylist, Track} from "@/types/spotify";
 import Player from "@/app/components/Player/Player";
 import Image from "next/image";
 import {useAppSelector} from "@/lib/hooks";
