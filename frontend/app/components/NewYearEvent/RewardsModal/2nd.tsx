@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {motion} from "framer-motion";
+import React, {useEffect} from 'react';
+
 import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setNewYearConfig} from "@/lib/newYearEventSlice";
 import {updateConfig} from "@/app/api/newYear";
@@ -9,9 +9,11 @@ const Second = ({selectedDay, setSelectedDay} : {selectedDay: number, setSelecte
 
     const config = useAppSelector(state => state.newYearEvent);
     const dispatch = useAppDispatch();
-    const [isTaken, ] = useState(!!config.taken_rewards[selectedDay])
+
 
     useEffect(() => {
+        if (selectedDay === null) return;
+        if (config.taken_rewards[selectedDay]) return;
         const take_award = async () => {
             const newConfig = {
                 ...config,
@@ -32,9 +34,9 @@ const Second = ({selectedDay, setSelectedDay} : {selectedDay: number, setSelecte
             }
         }
 
-        if (!isTaken)
+
             take_award().then();
-    }, [dispatch, config, isTaken, selectedDay]);
+    }, [dispatch, config, selectedDay]);
 
     return (
         <>
