@@ -1,16 +1,28 @@
 "use client";
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
-import {fetchTales, loadAudioBlob, loadVideoBlob} from "@/app/api/tales";
-import {getBlobFromIndexedDB, saveBlobToIndexedDB} from "@/app/utils/audioCache";
-import {Tale} from "@/app/fairy_tales/page";
+import {getConfig} from "@/app/api/newYear";
+import {useAppDispatch} from "@/lib/hooks";
+import {setNewYearConfig} from "@/lib/newYearEventSlice";
 
 const Header: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const dispatch = useAppDispatch();
     const handleLinkClick = () => {
         setIsOpen(false);
     };
+
+    useEffect(() => {
+        const fetch = async () => {
+            try {
+                const config = await getConfig();
+                dispatch(setNewYearConfig(config));
+            }catch (e) {
+                console.error(e)
+            }
+        }
+        fetch()
+    }, [dispatch]);
 
     return (
         <header

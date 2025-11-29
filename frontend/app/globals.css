@@ -65,3 +65,68 @@ audio::-webkit-media-slider-container{
     animation: marquee-loop 12s linear infinite;
     width: max-content;
 }
+
+.snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9000;
+    background: transparent;
+}
+
+.snowflake {
+    position: absolute;
+    top: -20px;
+    color: white;
+    opacity: 0.8;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+/* Ключевая анимация с качанием */
+@keyframes fall {
+    0% {
+        transform: translateY(-20vh) translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh)
+        translateX(var(--swing))
+        rotate(360deg);
+    }
+}
+
+/* Немного разной скорости и прозрачности для глубины */
+.snowflake:nth-child(5n+1) { opacity: 0.5; }
+.snowflake:nth-child(5n+2) { opacity: 0.7; }
+.snowflake:nth-child(5n+3) { opacity: 0.9; }
+
+@media (max-width: 1024px) and (orientation: portrait) {
+    .portrait-only {
+        display: flex;
+    }
+    .landscape-only {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+    .portrait-only {
+        display: none;
+    }
+    .landscape-only {
+        display: block;
+    }
+}
+
+/* По умолчанию (ноутбуки, десктопы) */
+.portrait-only {
+    display: none;
+}
+.landscape-only {
+    display: block;
+}
