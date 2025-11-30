@@ -14,7 +14,7 @@ const DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
 export default function Page() {
     const config = useAppSelector(state => state.newYearEvent);
     const today = dayjs();
-    const MONTH = 10
+    const MONTH = 11
     const isDecember = today.month() === MONTH;
 
     const SPECIAL_DAYS: Record<
@@ -77,7 +77,7 @@ export default function Page() {
             <Link href="/miracle/room" className={`${config.taken_rewards[17] ? "" : "hidden"} z-50`}>
                 <Image
                     src="/room.jpg"
-                    alt="kitchen"
+                    alt="room"
                     width={396}
                     height={396}
                     className={`rounded-[50%] aspect-square w-1/3 lg:w-1/6 absolute left-[7%] lg:left-[15%] top-290 lg:top-250 object-cover ${config.locations.outside ? "cursor-pointer" : "opacity-25"}`}
@@ -134,7 +134,7 @@ export default function Page() {
                         {points.map((point, i) => {
                             const day = DAYS[i];
 
-                            const isDateLocked = day > currentDay;
+                            const isDateLocked = day > currentDay && dayjs().month() === MONTH;
 
                             let lastOpenedDay = 0;
                             for (let d = 1; d <= 31; d++) {

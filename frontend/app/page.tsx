@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 
 export default function Home() {
 
-    const month = [10, 11, 0]
+    const month = [11, 0]
 
 
   return (

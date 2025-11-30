@@ -16,8 +16,8 @@ interface SnowFlake {
 
 const Snow = () => {
     const { inventory } = useAppSelector(state => state.newYearEvent);
-    const [snowflakes, setSnowflakes] = useState<SnowFlake[]>([]);
-    const [mounted, setMounted] = useState(false);
+
+    const [snowflakes, setSnowflakes] = useState<Array<SnowFlake>>([]);
 
     useEffect(() => {
         const flakes = Array.from({ length: 60 }, () => ({
@@ -30,12 +30,9 @@ const Snow = () => {
             flake: Math.random() > 0.5 ? '❅' : '❆',
         }));
         setSnowflakes(flakes);
-        setMounted(true);
     }, []);
 
-    if (!inventory.snow) return null;
-
-    return (
+    return ( inventory.snow &&
         <div className="snow">
             {snowflakes.map((flake, i) => (
                 <div
@@ -48,7 +45,6 @@ const Snow = () => {
                         fontSize: `${flake.fontSize}em`,
                         '--swing': `${flake.swing}px`,
                         opacity: flake.opacity,
-                        animation: mounted ? `fall ${flake.animationDuration}s linear infinite, swing 3s ease-in-out infinite` : 'none',
                     } as React.CSSProperties}
                 >
                     {flake.flake}

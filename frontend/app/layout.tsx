@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import StoreProvider from "@/app/storeProvider";
 import Snow from "./components/NewYearEvent/Snow";
+import MusicPlayer from "@/app/components/NewYearEvent/Music";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
               {children}
           </main>
           <Snow/>
+          <MusicPlayer/>
       </StoreProvider>}
       </body>
     </html>
