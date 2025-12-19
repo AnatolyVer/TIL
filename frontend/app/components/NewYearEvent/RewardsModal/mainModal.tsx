@@ -18,6 +18,15 @@ import Modal16 from "@/app/components/NewYearEvent/RewardsModal/16th";
 import Modal17 from "@/app/components/NewYearEvent/RewardsModal/17th";
 import Modal18 from "@/app/components/NewYearEvent/RewardsModal/18th";
 import Modal19 from "@/app/components/NewYearEvent/RewardsModal/19th";
+import Modal20 from "@/app/components/NewYearEvent/RewardsModal/20th";
+import Modal21 from "@/app/components/NewYearEvent/RewardsModal/21th";
+import Modal22 from "@/app/components/NewYearEvent/RewardsModal/22th";
+import Modal23 from "@/app/components/NewYearEvent/RewardsModal/23th";
+import Modal24 from "@/app/components/NewYearEvent/RewardsModal/24th";
+import Modal25 from "@/app/components/NewYearEvent/RewardsModal/25th";
+import Modal26 from "@/app/components/NewYearEvent/RewardsModal/26th";
+import Modal27 from "@/app/components/NewYearEvent/RewardsModal/27th";
+import Modal28 from "@/app/components/NewYearEvent/RewardsModal/28th";
 
 import {motion} from "framer-motion";
 
@@ -43,7 +52,15 @@ const MainModal = ({selectedDay, setSelectedDay} : {selectedDay: number, setSele
         17: <Modal17 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
         18: <Modal18 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
         19: <Modal19 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
-
+        20: <Modal20 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        21: <Modal21 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        22: <Modal22 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        23: <Modal23 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        24: <Modal24 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        25: <Modal25 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        26: <Modal26 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        27: <Modal27 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        28: <Modal28 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
 
     };
     return ( modals[selectedDay] &&

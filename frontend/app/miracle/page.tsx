@@ -23,7 +23,7 @@ export default function Page() {
     > = {
 
         9: () => config.dishes["cookies"] > 0 || config.taken_rewards[9],
-        11: () => config.decrypted,
+        11: () => config.decrypted || config.taken_rewards[11],
         13: () => config.dishes["buns"] > 0 || config.taken_rewards[13],
     };
 
@@ -226,6 +226,7 @@ export default function Page() {
             </div>
 
             {selectedDay && <MainModal selectedDay={selectedDay} setSelectedDay={setSelectedDay} />}
+
         </div>
     );
 }

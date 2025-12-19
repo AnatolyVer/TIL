@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {setNewYearConfig} from "@/lib/newYearEventSlice";
 import {updateConfig} from "@/app/api/newYear";
 
-const Modal18 = ({selectedDay, setSelectedDay} : {selectedDay: number, setSelectedDay: (day: number | null) => void}) => {
+const Modal19 = ({selectedDay, setSelectedDay} : {selectedDay: number, setSelectedDay: (day: number | null) => void}) => {
 
     const config = useAppSelector(state => state.newYearEvent);
     const dispatch = useAppDispatch();
@@ -49,4 +49,4 @@ const Modal18 = ({selectedDay, setSelectedDay} : {selectedDay: number, setSelect
     );
 };
 
-export default Modal18;
+export default Modal19;

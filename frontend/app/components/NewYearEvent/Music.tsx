@@ -7,10 +7,8 @@ export default function MusicPlayer() {
     const pathname = usePathname();
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
-    // пользователь разрешил воспроизведение?
     const [allowed, setAllowed] = useState(false);
 
-    // 1) Первый клик включает аудио
     useEffect(() => {
         const enableAudio = () => {
             setAllowed(true);
@@ -27,16 +25,14 @@ export default function MusicPlayer() {
         };
     }, []);
 
-    // 2) Создаём аудио после разрешения
     useEffect(() => {
         if (allowed && !audioRef.current) {
             audioRef.current = new Audio("/sounds/bg.ogg");
             audioRef.current.loop = true;
-            audioRef.current.volume = 0.2;
+            audioRef.current.volume = 0.1;
         }
     }, [allowed]);
 
-    // 3) Управляем воспроизведением по маршруту
     useEffect(() => {
         if (!audioRef.current || !allowed) return;
 
