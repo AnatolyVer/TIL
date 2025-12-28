@@ -226,7 +226,6 @@ export default function Page() {
             </div>
 
             {selectedDay && <MainModal selectedDay={selectedDay} setSelectedDay={setSelectedDay} />}
-
         </div>
     );
 }

@@ -27,6 +27,10 @@ import Modal25 from "@/app/components/NewYearEvent/RewardsModal/25th";
 import Modal26 from "@/app/components/NewYearEvent/RewardsModal/26th";
 import Modal27 from "@/app/components/NewYearEvent/RewardsModal/27th";
 import Modal28 from "@/app/components/NewYearEvent/RewardsModal/28th";
+import Modal29 from "@/app/components/NewYearEvent/RewardsModal/29th";
+import Modal30 from "@/app/components/NewYearEvent/RewardsModal/30th";
+import Modal31 from "@/app/components/NewYearEvent/RewardsModal/31th";
+import Fireworks from "@/app/components/NewYearEvent/Inventory/Fireworks";
 
 import {motion} from "framer-motion";
 
@@ -61,6 +65,9 @@ const MainModal = ({selectedDay, setSelectedDay} : {selectedDay: number, setSele
         26: <Modal26 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
         27: <Modal27 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
         28: <Modal28 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        29: <Modal29 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        30: <Modal30 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
+        31: <Modal31 selectedDay={selectedDay} setSelectedDay={setSelectedDay} />,
 
     };
     return ( modals[selectedDay] &&
@@ -71,6 +78,8 @@ const MainModal = ({selectedDay, setSelectedDay} : {selectedDay: number, setSele
             exit={{ opacity: 0 }}
             onClick={() => setSelectedDay(null)}
         >
+
+            {selectedDay === 31 && <Fireworks />}
             <motion.div
                 className="bg-white p-4 rounded-3xl max-w-7xl w-full text-center flex flex-col items-center relative overflow-hidden"
                 initial={{ scale: 0.7, y: 120, opacity: 0 }}
