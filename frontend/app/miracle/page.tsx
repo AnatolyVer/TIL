@@ -53,7 +53,7 @@ export default function Page() {
     }, []);
 
     return (
-        <div className="relative min-h-[250vh] bg-[#222] overflow-hidden flex items-start justify-center">
+        <div className="relative min-h-[300vh] lg:min-h-[280vh] bg-[#222] overflow-hidden flex items-start justify-center">
             <Link href="/miracle/outside" className={`${config.locations.outside ? "" : "hidden"} z-50`}>
                 <Image
                     src="/outside.jpg"
