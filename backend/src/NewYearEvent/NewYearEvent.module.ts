@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import {NewYearEvent, NewYearEventDocument, NewYearEventSchema} from '../entity/NewYearEvent';
+import {NewYearEvent, NewYearEventSchema} from '../entity/NewYearEvent';
 import {NewYearEventController} from "./NewYearEvent.controller";
 import {NewYearEventService} from "./NewYearEvent.service";
 

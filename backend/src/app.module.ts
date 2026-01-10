@@ -9,6 +9,7 @@ import {MongooseModule} from "@nestjs/mongoose";
 import {FairyTaleModule} from "./fairyTale/fairyTale.module";
 import {FilmController} from "./film/film.controller";
 import {NewYearEventModule} from "./NewYearEvent/NewYearEvent.module";
+import {WatchListModule} from "./WatchList/WatchList.module";
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import {NewYearEventModule} from "./NewYearEvent/NewYearEvent.module";
       }),
       MongooseModule.forRoot(process.env.MONGODB_URL as string),
       FairyTaleModule,
-      NewYearEventModule
+      NewYearEventModule,
+      WatchListModule,
   ],
   controllers: [DocxController, SpotifyController, FilmController],
   providers: [DocxService, SpotifyService],
