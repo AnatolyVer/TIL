@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "http://192.168.1.8:5000" ,
+    baseURL: "https://til-backend-vck5.onrender.com" ,
 });
 
 /*
-baseURL: "https://til-backend-vck5.onrender.com" ,
+baseURL: "" ,
 */
 
 api.interceptors.response.use(
