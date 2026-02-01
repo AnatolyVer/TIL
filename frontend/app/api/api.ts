@@ -4,10 +4,6 @@ const api = axios.create({
     baseURL: "https://til-backend-vck5.onrender.com" ,
 });
 
-/*
-baseURL: "" ,
-*/
-
 api.interceptors.response.use(
     response => response,
     error => {

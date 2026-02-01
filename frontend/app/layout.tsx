@@ -3,8 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import StoreProvider from "@/app/storeProvider";
-import Snow from "./components/NewYearEvent/Snow";
-import MusicPlayer from "@/app/components/NewYearEvent/Music";
+import MusicAndSnow from "@/app/events/new_year_miracle/Music&Snow";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -39,8 +38,7 @@ export default function RootLayout({
           <main className="pt-[72px] min-h-[calc(100vh)] flex flex-col">
               {children}
           </main>
-          <Snow/>
-          <MusicPlayer/>
+          <MusicAndSnow/>
       </StoreProvider>}
       </body>
     </html>

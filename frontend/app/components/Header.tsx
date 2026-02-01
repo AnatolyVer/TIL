@@ -71,6 +71,7 @@ const Header: React.FC = () => {
                         {[
                             { href: "/film", label: "Фильм" },
                             { href: "/poems", label: "Стихи" },
+                            { href: "/events", label: "События" },
                             { href: "/playlist", label: "Плейлист" },
                             { href: "/watchlist", label: "Просмотр" },
                             { href: "/fairy_tales", label: "Сказки" },
