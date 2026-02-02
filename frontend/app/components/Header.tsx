@@ -29,45 +29,45 @@ const Header: React.FC = () => {
             className="shadow-md fixed top-0 left-0 w-full h-[72px] z-60"
             style={{ background: "var(--header-bg)" }}
         >
-            <div className="container mx-auto flex items-center justify-between py-[18px] px-6">
+            <div className="mx-auto flex items-center justify-between py-[18px] px-6">
                 <Link
                     href="/"
-                    className="text-2xl sm:text-xl md:text-2xl lg:text-3xl font-extrabold transition-transform duration-300 hover:scale-110"
+                    className="text-3xl md:text-2xl lg:text-3xl font-extrabold transition-transform duration-300 hover:scale-110"
                     style={{ color: "var(--header-text)" }}
                 >
                     This I Love
                 </Link>
 
                 <button
-                    className="sm:hidden cursor-pointer relative w-8 flex flex-col justify-center items-center group"
+                    className="lg:hidden cursor-pointer relative w-8 flex flex-col justify-center items-center group"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-          <span
-              className={`block h-0.5 w-6 bg-[var(--header-text)] rounded transition-all duration-300
-              ${isOpen ? "rotate-45 translate-y-1.5" : ""}`}
-          />
-                    <span
-                        className={`block h-0.5 w-6 bg-[var(--header-text)] rounded my-1 transition-all duration-300
-              ${isOpen ? "opacity-0" : "opacity-100"}`}
-                    />
+                      <span
+                          className={`block h-0.5 w-6 bg-[var(--header-text)] rounded transition-all duration-300
+                          ${isOpen ? "rotate-45 translate-y-1.5" : ""}`}
+                      />
+                        <span
+                            className={`block h-0.5 w-6 bg-[var(--header-text)] rounded my-1 transition-all duration-300
+                              ${isOpen ? "opacity-0" : "opacity-100"}`}
+                        />
                     <span
                         className={`block h-0.5 w-6 bg-[var(--header-text)] rounded transition-all duration-300
-              ${isOpen ? "-rotate-45 -translate-y-1.5" : ""}`}
+                          ${isOpen ? "-rotate-45 -translate-y-1.5" : ""}`}
                     />
                 </button>
 
                 <nav
                     className={`
-                        absolute sm:static top-full left-0 w-full sm:w-auto
+                        absolute lg:static top-full left-0 w-full lg:w-auto
                         bg-[var(--header-bg)] lg:bg-transparent
-                        flex flex-col sm:flex-row sm:items-center
+                        flex flex-col lg:flex-row lg:items-center
                         transition-all duration-300 ease-in-out
                         ${isOpen ? "block translate-y-0 opacity-100 pointer-events-auto"
                                             : "hidden -translate-y-full opacity-0 pointer-events-none"}
-                        sm:block sm:translate-y-0 sm:opacity-100 sm:pointer-events-auto
+                        lg:block lg:translate-y-0 lg:opacity-100 lg:pointer-events-auto
                       `}
                 >
-                    <ul className="flex flex-col sm:flex-row sm:space-x-6">
+                    <ul className="flex flex-col lg:flex-row lg:space-x-6">
                         {[
                             { href: "/film", label: "Фильм" },
                             { href: "/poems", label: "Стихи" },
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
                         ].map(({ href, label }) => (
                             <li
                                 key={href}
-                                className="text-xl sm:text-[16px] md:text-xl lg:text-2xl py-2 sm:py-0 text-center"
+                                className="text-xl xl:text-2xl py-2 lg:py-0 text-center"
                                 style={{ color: "var(--header-text)" }}
                             >
                                 <Link

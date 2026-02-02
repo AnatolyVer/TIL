@@ -64,18 +64,23 @@ const Page = () => {
 
     return (
         <>
-            <div className="flex items-center h-[calc(100vh-72px)]">
-                <div className="h-full w-1/2 flex flex-col pt-30 gap-10 items-center">
-                    <h1  style={{ color: "var(--header-text)" }} className="text-4xl">Love is...</h1>
-                    <p className="text-2xl text-center">
+            <div className="flex flex-col justify-start lg:flex-row lg:items-center h-[calc(100vh-72px)] px-10">
+                <div className="h-1/3 lg:h-full w-full lg:w-1/2 flex flex-col pt-5 lg:pt-30 gap-4 items-center">
+                    <h1 style={{ color: "var(--header-text)" }} className="text-3xl sm:text-4xl">
+                        Love is...
+                    </h1>
+
+                    <p className="text-base text-center sm:text-lg lg:text-2xl leading-relaxed">
                         Эта коллекция посвящена дню святого Валентина. 14 февраля - 14
                         вкладышей в стиле праздника. Наши персонажи, наши увлечения и самое
                         главное - наша любовь...
                     </p>
-                    <p className="text-2xl text-center">
+
+                    <p className="text-base text-center sm:text-lg lg:text-2xl leading-relaxed">
                         Это первая и не последняя коллекция, ведь впереди нас ждёт целая вечность вместе..
                     </p>
-                    <p className="text-2xl text-center">
+
+                    <p className="text-base text-center sm:text-lg lg:text-2xl leading-relaxed">
                         Я люблю тебя...
                     </p>
                     <Image
@@ -83,22 +88,22 @@ const Page = () => {
                         alt="Love is.."
                         width={300}
                         height={300}
-                        className="rounded-lg object-cover cursor-pointer"
+                        className="rounded-lg hidden lg:flex object-contain cursor-pointer"
                         priority
                         onClick={() => setIsModalOpen(true)}
                     />
                 </div>
 
-                <div className="h-full w-1/2 flex flex-col justify-center items-center">
+                <div className="h-2/4 mt-4 lg:mt-0 lg:h-full w-full lg:w-1/2 flex flex-col justify-center items-center">
                     {show && <>
-                        <div className="flex justify-center items-center gap-4 mt-4 w-1/2">
+                        <div className="flex justify-center items-center gap-4 w-1/2">
                             <ArrowBackIosIcon className="cursor-pointer" onClick={() => handleChange(number - 1)}/>
                             <Image
                                 src={`/love_is/num${number}.png`}
                                 alt="Love is.."
-                                width={396}
+                                width={300}
                                 height={396}
-                                className="rounded-lg object-cover cursor-pointer"
+                                className="rounded-lg lg:h-full object-contain cursor-pointer"
                                 priority
                                 onClick={() => setIsModalOpen(true)}
                             />
@@ -126,7 +131,7 @@ const Page = () => {
                     />
                     <h1 className="text-2xl mt-2">{number}</h1>
                 </div>
-                    <div className="cursor-pointer flex  justify-center items-center h-full w-1/10 hover:bg-black/40 hover:backdrop-blur-md" onClick={() => handleChange(number - 1)}>
+                    <div className="cursor-pointer flex  justify-center items-center h-full w-1/10 hover:bg-black/40 hover:backdrop-blur-md" onClick={() => handleChange(number + 1)}>
                         <ArrowForwardIosIcon  />
                     </div>
                 </div>
