@@ -28,6 +28,7 @@ const Page = () => {
     const [sortMethod, setSortMethod] = useState<"asc" | "desc" | "time" | "type_asc" | "type_desc">("time");
     const [name, setName] = useState('');
     const [type, setType] = useState('');
+    const [status, setStatus] = useState('');
 
     const loadWatchList = useCallback(async () => {
         try {
@@ -54,9 +55,6 @@ const Page = () => {
         setBlocks(prev => sort(prev));
     }, [sortMethod]);
 
-    const handleTypeChange = (event: SelectChangeEvent) => {
-        setType(event.target.value);
-    };
 
     const sort = (grouped: WatchListBlock): WatchListBlock => {
         const copy = {
@@ -102,7 +100,7 @@ const Page = () => {
         if (!name || !type) return;
 
         try {
-            await fetchAddItem({ name, type, status: 'wish' });
+            await fetchAddItem({ name, type, status });
             setName('');
             setType('');
             setIsAdding(false);
@@ -257,7 +255,7 @@ const Page = () => {
                     <Select
                         value={type}
                         displayEmpty
-                        onChange={handleTypeChange}
+                        onChange={(e) => setType(e.target.value)}
                         className="w-48 bg-white"
                     >
                         <MenuItem value="" disabled>
@@ -267,6 +265,20 @@ const Page = () => {
                         <MenuItem value="Мультфильм">Мультфильм</MenuItem>
                         <MenuItem value="Сериал">Сериал</MenuItem>
                         <MenuItem value="Аниме">Аниме</MenuItem>
+                    </Select>
+
+                    <Select
+                        value={status}
+                        displayEmpty
+                        onChange={(e) => setStatus(e.target.value)}
+                        className="w-48 bg-white"
+                    >
+                        <MenuItem value="" disabled>
+                            Статус
+                        </MenuItem>
+                        <MenuItem value="wish">Посмотреть в будущем</MenuItem>
+                        <MenuItem value="in_progress">В процессе</MenuItem>
+                        <MenuItem value="done">Просмотрено</MenuItem>
                     </Select>
 
                     <button
