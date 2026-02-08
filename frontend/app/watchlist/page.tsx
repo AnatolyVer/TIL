@@ -28,7 +28,7 @@ const Page = () => {
     const [sortMethod, setSortMethod] = useState<"asc" | "desc" | "time" | "type_asc" | "type_desc">("time");
     const [name, setName] = useState('');
     const [type, setType] = useState('');
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState<"wish" | "in_progress" | "done">('wish');
 
     const loadWatchList = useCallback(async () => {
         try {
@@ -103,6 +103,7 @@ const Page = () => {
             await fetchAddItem({ name, type, status });
             setName('');
             setType('');
+            setStatus('wish');
             setIsAdding(false);
             loadWatchList();
         } catch (error) {
