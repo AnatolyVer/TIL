@@ -23,6 +23,23 @@ const Page = () => {
         setShow(true);
     }, []);
 
+    const preload = (src: string) => {
+        const img = new window.Image();
+        img.src = src;
+    };
+
+    useEffect(() => {
+        if (number == null) return;
+
+        const next = number >= max ? 1 : number + 1;
+        const prev = number <= 1 ? max : number - 1;
+
+        preload(`/love_is/num${next}.png`);
+        preload(`/love_is/num${prev}.png`);
+
+        preload(`/love_is/num${number}.png`);
+    }, [number]);
+
     const handleChange = (value: number) => {
         let newNumber = value;
         if (value > max) newNumber = 1;
@@ -164,7 +181,7 @@ const Page = () => {
                     </div>
 
                     <div
-                        className="flex flex-col items-center justify-center"
+                        className="flex flex-col items-center p-10 justify-center"
                         onTouchStart={onTouchStart}
                         onTouchMove={onTouchMove}
                         onTouchEnd={onTouchEnd}
@@ -178,7 +195,7 @@ const Page = () => {
                             priority
                             onClick={downloadImage}
                         />
-                        <h1 className="text-2xl mt-2">{number}</h1>
+                        <h1 className="text-2xl text-white mt-2">{number}</h1>
                     </div>
 
                     <div
