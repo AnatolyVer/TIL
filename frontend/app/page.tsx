@@ -20,27 +20,14 @@ export default function Home() {
         </Link>
       </div>
       <div className="mt-6 xl:mt-0 w-1/3 xl:w-1/2 justify-center xl:flex">
-
-
-          <Link href="/events/valentines_day">
-              <Image
-                  src="/love_is/img.png"
-                  alt="corner"
-                  width={396}
-                  height={396}
-                  className="rounded-lg object-cover"
-                  priority
-              />
-          </Link>
-
-          {/*<Image
+          <Image
               src="/sakura.png"
               alt="corner"
               width={396}
               height={396}
               className="rounded-lg object-cover"
               priority
-          />*/}
+          />
       </div>
     </section>
   );
