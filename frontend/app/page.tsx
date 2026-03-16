@@ -6,17 +6,17 @@ export default function Home() {
   return (
     <section className="h-[calc(100vh-72px)] mx-auto flex flex-col-reverse xl:flex-row items-center justify-center xl:justify-around py-4 px-6">
       <div className="flex flex-col justify-center items-center lg:w-3/4 text-center mt-10 lg:mt-0">
-        {/*<h1 className="text-l md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-bold italic">
+        <h1 className="text-l md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-bold italic">
           Моя любовь к тебе не знает границ. Её невозможно удержать, она
           проникает в каждую клеточку моего существа, наполняя меня теплом и светом.
           Ты - моя муза, мой вдохновитель, и эта книга стала плодом моей любви к тебе.
           Каждое мгновение с тобой - это бесценный дар, который я берегу в своём сердце.
           Я люблю тебя бесконечно...
-        </h1>*/}
-          <h1 className="text-l md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-bold italic">
+        </h1>
+          {/*<h1 className="text-l md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-bold italic">
               В этот день хочется поблагодарить тебя за всё, что ты для меня сделала. Оставайся самой прекрасной, улыбайся чаще. Ведь твоя улыбка заставляет
               мою душу петь. Я буду делать всё, чтобы ты каждый день расцветала так, как цветы при наступлении весны. Если перевернуть число, то получится моя любовь к тебе..
-          </h1>
+          </h1>*/}
         <Link href="/film">
           <button className="mt-6 w-48 px-4 py-2 cursor-pointer text-white rounded bg-pink-500 hover:bg-pink-600 transition-colors">
             Смотреть фильм
@@ -33,10 +33,10 @@ export default function Home() {
               priority
           />*/}
           <Image
-              src="/8.png"
+              src="/card.png"
               alt="corner"
-              width={396}
-              height={396}
+              width={496}
+              height={496}
               className="rounded-lg object-cover"
               priority
           />
